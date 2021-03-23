@@ -23,7 +23,12 @@
 
   ## Technologies
   
-  HTML,CSS,Javascript,Font Awesome,Node
+  -HTML
+  -CSS
+  -Javascript
+  -Font Awesome
+  -Node
+  -Heroku
 
   ## Known-Bugs
 
