@@ -24,15 +24,15 @@ request.onerror = (event) => {
 // Save record offline to the index db
 function saveRecord(record) {
   const transaction = db.transaction(['pendingtransations'], 'readwrite');
-  const budgetStore = transaction.objectStore('pendingtransations');
-  budgetStore.add(record);
+  const store = transaction.objectStore('pendingtransations');
+  store.add(record);
 };
 
 // Check database will see if there is anything in the index db, create fetch request if there is anything in the index db and clear it.
 function checkDatabase() {
   const transaction = db.transaction(['pendingtransations'], 'readwrite');
-  const budgetStore = transaction.objectStore('pendingtransations');
-  const getAll = budgetStore.getAll();
+  const store = transaction.objectStore('pendingtransations');
+  const getAll = store.getAll();
 
   getAll.onsuccess = () => {
     if (getAll.result.length > 0) {
@@ -48,9 +48,9 @@ function checkDatabase() {
         .then(() => {
           const transaction = db.transaction(['pendingtransations'], 'readwrite');
 
-          const budgetStore = transaction.objectStore('pendingtransations');
+          const store = transaction.objectStore('pendingtransations');
           // clear the index db
-          budgetStore.clear();
+          store.clear();
         });
     };
   };

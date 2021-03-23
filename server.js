@@ -15,13 +15,13 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+// added unified typlology and use create index
 mongoose.connect('mongodb://localhost/budget', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
 });
-// missing elements causing warning in console
 
 // routes
 app.use(require('./routes/api.js'));
