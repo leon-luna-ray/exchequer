@@ -18,7 +18,7 @@ const DATA_CACHE_NAME = 'data-cache-v1';
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      console.log('Your files were pre-cached successfully!');
+      console.log('✅ Pre-cache successful.');
       return cache.addAll(FILES_TO_CACHE);
     })
   );
