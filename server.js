@@ -17,12 +17,17 @@ app.use(express.static('public'));
 
 mongoose.connect('mongodb://localhost/budget', {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false
 });
+// missing elements causing warning in console
 
 // routes
 app.use(require('./routes/api.js'));
 
 app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}!`);
+  console.log(`
+  📡 The app is listening on port ${PORT}!
+  `);
 });
