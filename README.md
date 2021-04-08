@@ -4,7 +4,7 @@
   ## Description
 
   A progressive web app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The offline storage is done using a service worker file and manifest. The app will automatically update the app database as soon as the connection is restored.
-  - [🚀 Launch App](https://ray-luna-budget-tracker.herokuapp.com/)
+  - [🚀 Launch App](https://budget-tracker-rluna.herokuapp.com/)
 
 
   ## Table of Contents
@@ -53,7 +53,7 @@
 
   ## Links
 
-  - [Deployed Project](https://ray-luna-budget-tracker.herokuapp.com/) 
+  - [Deployed Project](https://budget-tracker-rluna.herokuapp.com/) 
 
   - [Project Repository](https://github.com/leon-luna-ray/budget-tracker)
 
