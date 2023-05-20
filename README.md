@@ -30,6 +30,7 @@
   - MongoDB
   - HTML
   - CSS
+  - TailwindCSS
 
   ## Next-Steps
 

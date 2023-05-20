@@ -1,0 +1,35 @@
+@layer utilities {
+    .text-16 {
+        @apply text-[1rem];
+    }
+    .text-18 {
+        @apply text-[1.125rem];
+    }
+    .text-24 {
+        @apply text-[1.5rem];
+    }
+    .text-32 {
+        @apply text-[2rem];
+    }
+    .text-40 {
+        @apply text-[2.5rem];
+    }
+    .text-48 {
+        @apply text-[3rem];
+    }
+    .text-56 {
+        @apply text-[3.5rem];
+    }
+    .text-64 {
+        @apply text-[4rem];
+    }
+    .text-72 {
+        @apply text-[4.5rem];
+    }
+    .text-80 {
+        @apply text-[5rem];
+    }
+    .text-160 {
+        @apply text-[10rem];
+    }
+}
