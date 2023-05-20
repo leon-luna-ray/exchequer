@@ -1,32 +1,32 @@
-gimport express from 'express';
-import mongoose from 'mongoose';
-import compression from 'compression';
+import express from 'express';
+import * as dotenv from 'dotenv';
+import cors from 'cors';
+import connectDB from './mongodb/connect.js';
+
+dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-
 const app = express();
 
-// app.use(logger('dev'));
-
-// app.use(compression());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
 
 app.use(express.static('public'));
-
-// added unified typlology and use create index
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/budget', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false
-// });
 
 // routes
 // app.use(require('./routes/api.js'));
 
-app.listen(PORT, () => {
-  console.log(`
-  📡 The app is listening on port ${PORT}!
-  `);
-});
+const startServer = async () => {
+  try {
+    connectDB(process.env.MONGODB_URI);
+    app.listen(PORT, () => {
+      console.log(`
+📡 The app is listening at http://localhost:${PORT}
+      `);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+startServer();
