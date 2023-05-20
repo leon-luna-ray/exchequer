@@ -1,5 +1,5 @@
 @layer components {
     .login-panel {
-        @apply flex justify-center items-center h-screen;
+        @apply flex justify-center items-center flex-col gap-y-[1rem] h-screen;
     }
 }
