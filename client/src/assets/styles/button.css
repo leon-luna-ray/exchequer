@@ -1,0 +1,5 @@
+@layer components {
+    .btn {
+        @apply border rounded-lg px-[1rem] py-[0.5rem] hover:cursor-pointer hover:bg-red-400 hover:text-white;
+    }
+}

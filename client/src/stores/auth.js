@@ -5,6 +5,9 @@ import axios from 'axios';
 import { parseJwt } from '../utils/parseJwt';
 
 export const useAuthStore = defineStore('auth', () => {
+  // State
+  const isSingedIn = ref(false);
+
   // Computed
   const googleEnabled = computed(() => {
     if (typeof window === 'undefined' || !window.google) {
@@ -13,67 +16,59 @@ export const useAuthStore = defineStore('auth', () => {
     return true;
   });
 
+  // Setters
+
   // Methods
-  const login = async ({ credential }) => {
+  const signIn = async ({ credential }) => {
     const profileObj = credential ? parseJwt(credential) : null;
 
     if (profileObj) {
       localStorage.setItem(
-        'user',
+        'bt-user',
         JSON.stringify({
           ...profileObj,
         })
       );
       localStorage.setItem('bt-token', `${credential}`);
-
+      isSingedIn.value = true;
       return {
         success: true,
       };
     }
-
+    isSingedIn.value = false;
     return {
       success: false,
     };
   };
-  const logout = async () => {
-    const token = localStorage.getItem('token');
+  const signOut = async () => {
+    const token = localStorage.getItem('bt-token');
 
     if (token && typeof window !== 'undefined') {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      localStorage.removeItem('bt-token');
+      localStorage.removeItem('bt-user');
       axios.defaults.headers.common = {};
       window.google?.accounts.id.revoke(token, () => {
         return {};
       });
+      isSingedIn.value = false;
+      // Todo find if there is a better solution to reloading the page
+      location.reload();
     }
 
     return {
       success: true,
-      redirectTo: '/login',
+    //   redirectTo: '/login',
     };
   };
   const onError = async (error) => {
     console.error(error);
     return { error };
   };
-  const check = async () => {
-    const token = localStorage.getItem('token');
-
+  const checkAuth = async () => {
+    const token = localStorage.getItem('bt-token');
     if (token) {
-      return {
-        authenticated: true,
-      };
+      isSingedIn.value = true;
     }
-
-    return {
-      authenticated: false,
-      error: {
-        message: 'Check failed',
-        name: 'Not authenticated',
-      },
-      logout: true,
-      redirectTo: '/login',
-    };
   };
   const getPermissions = async () => null;
   const getIdentity = async () => {
@@ -87,6 +82,9 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     googleEnabled,
-    login,
+    isSingedIn,
+    checkAuth,
+    signIn,
+    signOut,
   };
 });

@@ -5,21 +5,6 @@
   ### 🚧 This project is being refactored
   An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
 
-
-  ## Table of Contents
-
-  * [Image](#image)
-  * [Technologies](#technologies)
-  * [Known-Bugs](#known-bugs)
-  * [Next-Steps](#next-steps)
-  * [License](#license)
-  * [Contact](#contact)
-  * [Links](#links)
-
-  ## Image
-
-  ![Screenshot](./public/images/budget-tracker.png)
-
   ## Technologies
 
   - Javascript
