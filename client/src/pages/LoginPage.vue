@@ -20,7 +20,7 @@ onMounted(() => {
             callback: async (res) => {
                 if (res.credential) {
                     // Todo move to store?
-                    login(res);
+                    authStore.login(res);
                 }
             },
         });
