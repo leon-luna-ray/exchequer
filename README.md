@@ -3,7 +3,7 @@
 
   ## Description
   ### 🚧 This project is being refactored
-  A progressive web app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The offline storage is done using a service worker file and manifest. The app will automatically update the app database as soon as the connection is restored.
+  An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
 
 
   ## Table of Contents
@@ -23,8 +23,10 @@
   ## Technologies
 
   - Javascript
-  - Node.js
+  - Vue.js
+  - Vite.js
   - Express.js
+  - Node.js
   - MongoDB
   - HTML
   - CSS
