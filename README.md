@@ -13,13 +13,14 @@
   - HTML
   - CSS
   - TailwindCSS
+  - Netlify
 
   ### Backend
   - Node.js
   - Express.js
   - MongoDB Atlas
-  - Render
   - Google Sign-in
+  - Render
 
   ## Next-Steps
 
