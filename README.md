@@ -6,16 +6,20 @@
   An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
 
   ## Technologies
-
+  ### Frontend
   - Javascript
   - Vue.js
   - Vite.js
-  - Express.js
-  - Node.js
-  - MongoDB Atlas
   - HTML
   - CSS
   - TailwindCSS
+
+  ### Backend
+  - Node.js
+  - Express.js
+  - MongoDB Atlas
+  - Render
+  - Google Sign-in
 
   ## Next-Steps
 
