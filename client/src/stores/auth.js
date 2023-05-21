@@ -8,7 +8,7 @@ export const useAuthStore = defineStore('auth', () => {
   // State
   const isSingedIn = ref(false);
   const userProfile = ref(null);
-  const baseApiUrl = 'http://localhost:8080';
+  const baseApiUrl = import.meta.env.VITE_APP_BASE_API_URL;
 
   // Computed
   const isGoogleEnabled = computed(() => {
