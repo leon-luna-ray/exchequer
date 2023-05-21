@@ -1,6 +1,9 @@
 {
   "name": "budget-app",
   "version": "2.0.0",
+  "engines": {
+    "node": "18.0.0"
+  },
   "description": "Server for budget tracker app.",
   "type": "module",
   "main": "index.js",
