@@ -7,10 +7,11 @@ import { parseJwt } from '../utils/parseJwt';
 export const useAuthStore = defineStore('auth', () => {
   // State
   const isSingedIn = ref(false);
+  const userProfile = ref(null);
   const baseApiUrl = 'http://localhost:8080';
 
   // Computed
-  const googleEnabled = computed(() => {
+  const isGoogleEnabled = computed(() => {
     if (typeof window === 'undefined' || !window.google) {
       return false;
     }
@@ -33,7 +34,8 @@ export const useAuthStore = defineStore('auth', () => {
       const data = await res.json();
 
       if (res.status === 200) {
-        console.log(res)
+        isSingedIn.value = true;
+        userProfile.value = profileObj;
         localStorage.setItem(
           'bt-user',
           JSON.stringify({
@@ -42,17 +44,11 @@ export const useAuthStore = defineStore('auth', () => {
           })
         );
       } else {
-        console.log('not res 200')
         isSingedIn.value = false;
-        return Promise.reject;
       }
     }
 
     localStorage.setItem('bt-token', `${credential}`);
-    // Todo use vue-use to create a reactive computed property if local storage
-    isSingedIn.value = true;
-
-    return Promise.resolve();
   };
 
   const signOut = async () => {
@@ -63,15 +59,12 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.removeItem('bt-user');
       axios.defaults.headers.common = {};
       window.google?.accounts.id.revoke(token, () => {
-        return Promise.resolve();
+        return;
       });
 
       isSingedIn.value = false;
-      // Todo find if there is a better solution to reloading the page to get, redirect?
       location.reload();
     }
-
-    // return Promise.resolve();
   };
   const checkError = () => Promise.resolve();
 
@@ -79,22 +72,21 @@ export const useAuthStore = defineStore('auth', () => {
     const token = localStorage.getItem('bt-token');
     if (token) {
       isSingedIn.value = true;
-      return Promise.resolve();
     }
-    return Promise.reject();
   };
   const getPermissions = () => Promise.resolve();
 
   const getIdentity = async () => {
     const user = localStorage.getItem('bt-user');
     if (user) {
-      return Promise.resolve(JSON.parse(user));
+      return JSON.parse(user);
     }
   };
 
   return {
-    googleEnabled,
+    isGoogleEnabled,
     isSingedIn,
+    userProfile,
     checkAuth,
     getIdentity,
     signIn,

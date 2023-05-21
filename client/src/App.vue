@@ -1,11 +1,11 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import { useAuthStore } from './stores/auth'
 import LoginPage from './pages/LoginPage.vue';
 
 const authStore = useAuthStore();
 
-onMounted(async () => {
+onBeforeMount(async () => {
   await authStore.checkAuth();
 })
 </script>

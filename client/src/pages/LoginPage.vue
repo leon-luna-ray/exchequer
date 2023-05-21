@@ -4,13 +4,17 @@ import { storeToRefs } from 'pinia'
 import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore();
-const { googleEnabled, isSingedIn } = storeToRefs(authStore);
+const {
+    isGoogleEnabled,
+    isSingedIn,
+    userProfile,
+} = storeToRefs(authStore);
 
 const loginButton = ref(null);
 
 
 onMounted(() => {
-    if (!googleEnabled.value || isSingedIn.value) return
+    if (!isGoogleEnabled.value || isSingedIn.value) return
 
     try {
         window.google.accounts.id.initialize({
@@ -37,9 +41,12 @@ onMounted(() => {
 
 <template>
     <h1>Budget Tracker</h1>
-    <div class="login-panel">
+    <div v-if="isSingedIn" class="login-panel">
+        <h2>Hello!</h2>
+        <div @click="authStore.signOut" class="logout-button btn">Sign Out</div>
+    </div>
+    <div v-else class="login-panel">
         <h2>Sign In</h2>
-        <div v-if="isSingedIn" @click="authStore.signOut" class="logout-button btn">Sign Out</div>
-        <div v-else id="login-button" ref="loginButton"></div>
+        <div id="login-button" ref="loginButton"></div>
     </div>
 </template>
