@@ -10,9 +10,8 @@ const loginButton = ref(null);
 
 
 onMounted(() => {
-    if (!googleEnabled.value) return
+    if (!googleEnabled.value || isSingedIn.value) return
 
-    // Todo move to auth store
     try {
         window.google.accounts.id.initialize({
             ux_mode: "popup",
@@ -32,13 +31,7 @@ onMounted(() => {
         console.log(error);
     }
 
-    if (!isSingedIn.value) {
-        window.google.accounts.id.renderButton(loginButton.value, {
-            theme: "filled_blue",
-            size: "medium",
-            type: "standard",
-        });
-    }
+
 })
 </script>
 

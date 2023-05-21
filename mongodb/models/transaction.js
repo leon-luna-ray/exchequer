@@ -18,6 +18,6 @@ const TransactionSchema = new Schema({
   },
 });
 
-const transactionModel = mongoose.model('Transaction', TransactionSchema);
+const Transaction = mongoose.model('Transaction', TransactionSchema);
 
-export default transactionModel;
+export default Transaction;

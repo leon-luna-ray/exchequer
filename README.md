@@ -12,7 +12,7 @@
   - Vite.js
   - Express.js
   - Node.js
-  - MongoDB
+  - MongoDB Atlas
   - HTML
   - CSS
   - TailwindCSS

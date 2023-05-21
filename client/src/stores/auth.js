@@ -7,6 +7,7 @@ import { parseJwt } from '../utils/parseJwt';
 export const useAuthStore = defineStore('auth', () => {
   // State
   const isSingedIn = ref(false);
+  const baseApiUrl = 'http://localhost:8080';
 
   // Computed
   const googleEnabled = computed(() => {
@@ -16,30 +17,44 @@ export const useAuthStore = defineStore('auth', () => {
     return true;
   });
 
-  // Setters
-
   // Methods
   const signIn = async ({ credential }) => {
     const profileObj = credential ? parseJwt(credential) : null;
 
     if (profileObj) {
-      localStorage.setItem(
-        'bt-user',
-        JSON.stringify({
-          ...profileObj,
-        })
-      );
-      localStorage.setItem('bt-token', `${credential}`);
-      isSingedIn.value = true;
-      return {
-        success: true,
-      };
+      const res = await fetch(`${baseApiUrl}/api/v1/users`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: profileObj.name,
+          email: profileObj.email,
+        }),
+      });
+      const data = await res.json();
+
+      if (res.status === 200) {
+        console.log(res)
+        localStorage.setItem(
+          'bt-user',
+          JSON.stringify({
+            ...profileObj,
+            userid: data._id,
+          })
+        );
+      } else {
+        console.log('not res 200')
+        isSingedIn.value = false;
+        return Promise.reject;
+      }
     }
-    isSingedIn.value = false;
-    return {
-      success: false,
-    };
+
+    localStorage.setItem('bt-token', `${credential}`);
+    // Todo use vue-use to create a reactive computed property if local storage
+    isSingedIn.value = true;
+
+    return Promise.resolve();
   };
+
   const signOut = async () => {
     const token = localStorage.getItem('bt-token');
 
@@ -48,42 +63,40 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.removeItem('bt-user');
       axios.defaults.headers.common = {};
       window.google?.accounts.id.revoke(token, () => {
-        return {};
+        return Promise.resolve();
       });
+
       isSingedIn.value = false;
-      // Todo find if there is a better solution to reloading the page
+      // Todo find if there is a better solution to reloading the page to get, redirect?
       location.reload();
     }
 
-    return {
-      success: true,
-    //   redirectTo: '/login',
-    };
+    // return Promise.resolve();
   };
-  const onError = async (error) => {
-    console.error(error);
-    return { error };
-  };
+  const checkError = () => Promise.resolve();
+
   const checkAuth = async () => {
     const token = localStorage.getItem('bt-token');
     if (token) {
       isSingedIn.value = true;
+      return Promise.resolve();
     }
+    return Promise.reject();
   };
-  const getPermissions = async () => null;
-  const getIdentity = async () => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      return JSON.parse(user);
-    }
+  const getPermissions = () => Promise.resolve();
 
-    return null;
+  const getIdentity = async () => {
+    const user = localStorage.getItem('bt-user');
+    if (user) {
+      return Promise.resolve(JSON.parse(user));
+    }
   };
 
   return {
     googleEnabled,
     isSingedIn,
     checkAuth,
+    getIdentity,
     signIn,
     signOut,
   };
