@@ -40,13 +40,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <h1>Budget Tracker</h1>
-    <div v-if="isSingedIn" class="login-panel">
-        <h2>Hello!</h2>
-        <div @click="authStore.signOut" class="logout-button btn">Sign Out</div>
-    </div>
-    <div v-else class="login-panel">
-        <h2>Sign In</h2>
-        <div id="login-button" ref="loginButton"></div>
+    <div class="login-page flex flex-col items-center justify-center">
+        <h1>Budget Tracker</h1>
+        <div v-if="isSingedIn" class="login-panel">
+            <h2>Hello!</h2>
+            <div @click="authStore.signOut" class="logout-button btn">Sign Out</div>
+        </div>
+        <div v-else class="login-panel">
+            <h2>Sign In</h2>
+            <div id="login-button" ref="loginButton"></div>
+        </div>
     </div>
 </template>
