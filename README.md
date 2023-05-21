@@ -2,10 +2,15 @@
 # Online/Offline Budget Tracker
 
   ## Description
-  ### 🚧 This project is being refactored
   An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
 
+  ### Link
+  #### 🚧 This project is being refactored 🚧
+  - [https://budget-tracker-rldev.netlify.app/](https://budget-tracker-rldev.netlify.app/)
+
   ## Technologies
+  This is a MEVN stack project built with MongoDB, Express.js, Vue.js and Node.js
+
   ### Frontend
   - Javascript
   - Vue.js
@@ -19,12 +24,8 @@
   - Node.js
   - Express.js
   - MongoDB Atlas
-  - Google Sign-in
+  - Google Authenication
   - Render
-
-  ## Next-Steps
-
-  Add a user registration and login functionality, refactor to Vue.
 
   ## License
 
