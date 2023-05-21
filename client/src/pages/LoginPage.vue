@@ -4,15 +4,18 @@ import { storeToRefs } from 'pinia'
 import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore();
-const { googleEnabled, isSingedIn } = storeToRefs(authStore);
+const {
+    isGoogleEnabled,
+    isSingedIn,
+    userProfile,
+} = storeToRefs(authStore);
 
 const loginButton = ref(null);
 
 
 onMounted(() => {
-    if (!googleEnabled.value) return
+    if (!isGoogleEnabled.value || isSingedIn.value) return
 
-    // Todo move to auth store
     try {
         window.google.accounts.id.initialize({
             ux_mode: "popup",
@@ -32,21 +35,18 @@ onMounted(() => {
         console.log(error);
     }
 
-    if (!isSingedIn.value) {
-        window.google.accounts.id.renderButton(loginButton.value, {
-            theme: "filled_blue",
-            size: "medium",
-            type: "standard",
-        });
-    }
+
 })
 </script>
 
 <template>
     <h1>Budget Tracker</h1>
-    <div class="login-panel">
+    <div v-if="isSingedIn" class="login-panel">
+        <h2>Hello!</h2>
+        <div @click="authStore.signOut" class="logout-button btn">Sign Out</div>
+    </div>
+    <div v-else class="login-panel">
         <h2>Sign In</h2>
-        <div v-if="isSingedIn" @click="authStore.signOut" class="logout-button btn">Sign Out</div>
-        <div v-else id="login-button" ref="loginButton"></div>
+        <div id="login-button" ref="loginButton"></div>
     </div>
 </template>
