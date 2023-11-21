@@ -14,7 +14,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const PORT = process.env.PORT || 8090;
+const PORT = process.env.PORT || 8080;
 
 const connectDB = async () => {
   try {
@@ -39,7 +39,7 @@ app.use('/api/v1/protected', protectedRoutes);
 app.use('/api/v1/posts', posts);
 
 // Static
-app.use(express.static('./client/build'));
+app.use(express.static('./client/dist'));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
