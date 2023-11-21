@@ -12,3 +12,19 @@ button,
   border-radius: 5px;
   cursor: pointer;
 }
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav {
+  display: flex;
+  column-gap: 1rem;
+}

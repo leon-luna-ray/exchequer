@@ -1,5 +1,12 @@
 <template>
-    <header>
+  <header>
+    <router-link to="/">
       <h1>Express Budget</h1>
-    </header>
+    </router-link>
+    <nav>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <router-link to="/login">Login</router-link>
+      <router-link to="/signup">Singup</router-link>
+    </nav>
+  </header>
 </template>
