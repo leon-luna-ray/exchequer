@@ -6,7 +6,7 @@
 
   ### Link
   #### 🚧 This project is being refactored 🚧
-  - [https://budget-tracker-rldev.netlify.app/](https://budget-tracker-rldev.netlify.app/)
+  - [https://express-budget.fly.dev/](https://express-budget.fly.dev/)
 
   ## Technologies
   This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
