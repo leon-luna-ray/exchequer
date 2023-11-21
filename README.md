@@ -12,18 +12,17 @@
   This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
 
   ### Frontend
+  - CSS3
+  - HTML5
   - Javascript
-  - Vue.js
   - Vite.js
-  - HTML
-  - CSS
-  - TailwindCSS
+  - Vue.js
 
   ### Backend
-  - Node.js
   - Express.js
-  - MongoDB
   - Fly.io
+  - Node.js
+  - MongoDB
 
   ## License
 
