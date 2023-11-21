@@ -1,20 +1,37 @@
-@layer base {
-      body {
-        /* @apply bg-slate-900 text-white; */
-      }
-      h1, .h1 {
-        @apply text-64 font-[700];
-      }
-      h2, .h2 {
-        @apply text-48 font-[600];
-      }
-      h3, .h3 {
-        @apply text-32 font-[500];
-      }
-      h4, .h4 {
-        @apply text-24 font-[500];
-      }
-      a {
-        @apply underline;
-      }
+body {
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  background-color: darkslategrey;
+  color: white;
+}
+button,
+.btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav {
+  display: flex;
+  column-gap: 1rem;
+}
+footer .inner {
+  display: flex;
+  justify-content: center;
+}
+footer p a {
+  text-decoration: underline;
 }
