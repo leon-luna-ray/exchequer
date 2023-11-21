@@ -18,14 +18,12 @@
   - HTML
   - CSS
   - TailwindCSS
-  - Netlify
 
   ### Backend
   - Node.js
   - Express.js
-  - MongoDB Atlas
-  - Google Authenication
-  - Render
+  - MongoDB
+  - Fly.io
 
   ## License
 
