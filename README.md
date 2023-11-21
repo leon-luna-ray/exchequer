@@ -9,7 +9,7 @@
   - [https://budget-tracker-rldev.netlify.app/](https://budget-tracker-rldev.netlify.app/)
 
   ## Technologies
-  This is a MEVN stack project built with MongoDB, Express.js, Vue.js and Node.js
+  This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
 
   ### Frontend
   - Javascript
