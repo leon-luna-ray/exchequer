@@ -41,7 +41,7 @@ app.use('/api/v1/posts', posts);
 // Static
 app.use(express.static('./client/dist'));
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
 });
 
 connectDB();
