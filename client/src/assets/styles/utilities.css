@@ -1,5 +1,19 @@
-@layer utilities {
-    .test-border {
-        @apply border-2 border-red-500;
-    }
+.border-red {
+  border: 3px solid red;
+}
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.flex-col-03 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3rem;
+}
+.flex-col-1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
 }

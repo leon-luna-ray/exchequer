@@ -1,0 +1,14 @@
+.form-panel {
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  padding: 4rem;
+  border-radius: 2%;
+}
+.form-panel form {
+  align-items: center;
+}
+.form-panel form button {
+  margin-top: 1rem;
+  width: max-content;
+}
