@@ -2,8 +2,8 @@
 import { onBeforeMount } from 'vue';
 import { RouterView } from 'vue-router';
 import { useAuthStore } from './stores/auth'
-import LoginPage from './pages/LoginPage.vue';
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 const authStore = useAuthStore();
 
@@ -14,8 +14,11 @@ onBeforeMount(async () => {
 
 <template>
   <div id="vue-app">
-    <Header />
-    <RouterView />
+    <div>
+      <Header />
+      <RouterView />
+    </div>
+    <Footer />
   </div>
 </template>
 
