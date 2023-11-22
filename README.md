@@ -1,40 +1,44 @@
-
 # MangoSticky
 
-  ## Description
-  MEVN full-stack sticky notes application.
+## Description
 
-  ### Link
-  #### 🚧 This project is being refactored 🚧
+MEVN full-stack sticky notes application.
 
+### Link
 
-  ## Technologies
-  This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
+#### 🚧 This project is in development 🚧
 
-  ### Frontend
-  - CSS3
-  - HTML5
-  - Javascript
-  - Vite.js
-  - Vue.js
+[https://mango-stickies.fly.dev/](https://mango-stickies.fly.dev/)
 
-  ### Backend
-  - Express.js
-  - Fly.io
-  - Node.js
-  - MongoDB
+## Technologies
 
-  ## License
+This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
 
-  This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+### Frontend
 
-  ## Contact
+- CSS3
+- HTML5
+- Javascript
+- Vite.js
+- Vue.js
 
-  Author: Ray Luna
+### Backend
 
-  If you have any questions about the repo, open an issue or contact me directly at:
-  - E-Mail: leon.luna.ray@gmail.com
-  - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
+- Express.js
+- Fly.io
+- Node.js
+- MongoDB
 
+## License
 
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Contact
+
+Author: Ray Luna
+
+If you have any questions about the repo, open an issue or contact me directly at:
+
+- E-Mail: leon.luna.ray@gmail.com
+- GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
