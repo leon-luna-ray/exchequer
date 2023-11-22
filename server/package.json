@@ -1,10 +1,10 @@
 {
-  "name": "budget-app",
+  "name": "sticky-notes",
   "version": "2.0.0",
   "engines": {
     "node": "18.16.1"
   },
-  "description": "Server for budget tracker app.",
+  "description": "Server for sticky notes app.",
   "type": "module",
   "main": "index.js",
   "scripts": {

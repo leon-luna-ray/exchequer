@@ -1,12 +1,12 @@
 
-# Online/Offline Budget Tracker
+# MangoSticky
 
   ## Description
-  An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
+  MEVN full-stack sticky notes application.
 
   ### Link
   #### 🚧 This project is being refactored 🚧
-  - [https://express-budget.fly.dev/](https://express-budget.fly.dev/)
+
 
   ## Technologies
   This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js

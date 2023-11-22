@@ -1,7 +1,7 @@
 let db;
 
 // open request into index db (2nd paramter is version)
-const request = indexedDB.open('budget-tracker', 1);
+const request = indexedDB.open('sticky-notes', 1);
 
 request.onupgradeneeded = (event) => {
   const db = event.target.result;

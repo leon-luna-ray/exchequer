@@ -1,10 +1,10 @@
 {
-  "name": "express-budget",
+  "name": "sticky-notes",
   "version": "3.0.0",
   "engines": {
     "node": ">=18 <19"
   },
-  "description": "Server for Express Budget app.",
+  "description": "Server for sticky notes app.",
   "type": "module",
   "main": "index.mjs",
   "scripts": {
