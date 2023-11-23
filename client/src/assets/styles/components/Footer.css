@@ -1,0 +1,7 @@
+footer .inner {
+    display: flex;
+    justify-content: center;
+  }
+  footer p a {
+    text-decoration: underline;
+  }
