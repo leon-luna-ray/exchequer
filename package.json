@@ -1,10 +1,10 @@
 {
-  "name": "sticky-notes",
+  "name": "exchequer",
   "version": "3.0.0",
   "engines": {
     "node": ">=18 <19"
   },
-  "description": "Server for sticky notes app.",
+  "description": "Server for budgeting app.",
   "type": "module",
   "main": "index.mjs",
   "scripts": {

@@ -21,7 +21,7 @@ const connectDB = async () => {
     const conn = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      dbName: 'sticky_notes',
+      dbName: 'exchequer',
     });
     console.log(`📀 MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {

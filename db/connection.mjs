@@ -12,6 +12,6 @@ try {
   console.error("Error connecting to MongoDB:", e);
 }
 
-const db = conn.db("sticky-notes");
+const db = conn.db("budget-tracker");
 
 export default db;
