@@ -11,14 +11,19 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  color: var(--ex-black);
+  background-color: var(--ex-white);
+}
+.dark body {
   background-color: var(--ex-black);
   color: var(--ex-white);
-  margin: 0;
 }
+
 button,
 .btn {
   background-color: var(--ex-orange);
-  color: var(--ex-white);
+  color: var(--ex-white) !important;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -32,6 +37,8 @@ button:hover,
   background-color: var(--ex-yellow);
   color: var(--ex-black);
 }
+
+
 a {
   color: inherit;
   text-decoration: none;
