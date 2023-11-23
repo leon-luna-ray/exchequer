@@ -1,31 +1,34 @@
 <template>
-    <div id="login" class="centered-content">
-        <div class="form-panel flex-col-1">
-            <h1>Login</h1>
-            <form @submit.prevent="login" class="flex-col-1">
-                <div class="flex-col-03">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" v-model="username" required>
+    <main id="login" class="centered-content">
+        <FormPanel :handle-submit="handleLogin">
+            <template v-slot:logo>Login</template>
+            <template v-slot:form>
+                <label for="username">Username</label>
+                <input type="text" id="username" v-model="username" />
+
+                <label for="password">Password</label>
+                <input type="password" id="password" v-model="password" />
+                <div class="btn-wrap">
+                    <button class="btn" type="submit">Login</button>
                 </div>
-                <div class="flex-col-03">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" v-model="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    </div>
+            </template>
+        </FormPanel>
+    </main>
 </template>
 
 <script setup>
 import { onMounted, ref, computed } from 'vue';
 import { storeToRefs } from 'pinia'
 import { useAuthStore } from '../stores/auth'
+import FormPanel from '@/components/FormPanel.vue';
 
 const username = ref('');
 const password = ref('');
 
-
+const handleLogin = (e) => {
+    console.log(e);
+    console.log('event submit!!');
+}
 
 // const authStore = useAuthStore();
 // const {
@@ -58,6 +61,3 @@ const password = ref('');
 // })
 </script>
 
-<style scoped>
-@import '@/assets/styles/pages/LoginPage.css';
-</style>

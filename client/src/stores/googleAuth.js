@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { parseJwt } from '../utils/parseJwt';
 
-export const useAuthStore = defineStore('auth', () => {
+export const useGoogleAuthStore = defineStore('googleAuth', () => {
   // State
   const isSingedIn = ref(false);
   const userProfile = ref(null);

@@ -1,15 +1,17 @@
 <script setup>
 import { onBeforeMount } from 'vue';
 import { RouterView } from 'vue-router';
-import { useAuthStore } from './stores/auth'
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import { useAuthStore } from '@/stores/auth'
 
-const authStore = useAuthStore();
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
-onBeforeMount(async () => {
-  await authStore.checkAuth();
-})
+// const auth = useAuthStore();
+
+
+// onBeforeMount(async () => {
+//   await auth.checkAuth();
+// })
 </script>
 
 <template>

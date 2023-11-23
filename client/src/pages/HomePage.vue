@@ -1,18 +1,9 @@
 <template>
-    <main id="home">
-        <div class="hero">
-            <div class="container">
-
-                <h1>The progressive go-the-go travel budgeting app.</h1>
-                <p>A travel expenses app that works online and offline.</p>
-                <div class="buttons">
-                    <router-link to="/login" class="btn">Login</router-link>
-                    <router-link to="/signup" class="btn secondary">Singup</router-link>
-                </div>
-            </div>
-        </div>
+    <main id="home" class="flex-col-1">
+        <Hero />
     </main>
 </template>
-<style scoped>
-@import '@/assets/styles/pages/HomePage.css';
-</style>
+
+<script setup>
+import Hero from '@/components/Hero.vue'
+</script>
