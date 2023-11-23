@@ -1,6 +1,6 @@
 <template>
     <main id="login" class="centered-content">
-        <FormPanel>
+        <FormPanel :handle-submit="handleLogin">
             <template v-slot:logo>Login</template>
             <template v-slot:form>
                 <label for="username">Username</label>

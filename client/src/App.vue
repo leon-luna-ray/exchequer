@@ -6,12 +6,12 @@ import { useAuthStore } from '@/stores/auth'
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
-const auth = useAuthStore();
+// const auth = useAuthStore();
 
 
-onBeforeMount(async () => {
-  await auth.checkAuth();
-})
+// onBeforeMount(async () => {
+//   await auth.checkAuth();
+// })
 </script>
 
 <template>

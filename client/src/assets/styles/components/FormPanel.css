@@ -9,7 +9,8 @@
   text-align: center;
 }
 .dark .form-panel {
-  border: 1px solid var(--ex-white);
+  border: 0.1px solid var(--ex-white);
+  box-shadow: 0 0 5px white;
 }
 .form-panel:deep(label) {
   display: block;
