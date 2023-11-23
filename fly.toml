@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mango-stickies on 2023-11-21T20:29:16-08:00
+# fly.toml app configuration file generated for exchequer on 2023-11-22T21:12:37-08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "mango-stickies"
+app = "exchequer"
 primary_region = "sea"
 
 [build]

@@ -1,7 +1,7 @@
 <template>
   <header>
     <router-link to="/">
-      <h1>MangoStickies</h1>
+      <h1>Exchequer</h1>
     </router-link>
     <nav>
       <router-link to="/dashboard">Dashboard</router-link>

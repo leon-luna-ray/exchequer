@@ -1,14 +1,13 @@
-# MangoSticky
+# Exchequer
 
 ## Description
 
-MEVN full-stack sticky notes application.
+MEVN full-stack travel budgeting application.
 
 ### Link
 
 #### 🚧 This project is in development 🚧
 
-[https://mango-stickies.fly.dev/](https://mango-stickies.fly.dev/)
 
 ## Technologies
 
