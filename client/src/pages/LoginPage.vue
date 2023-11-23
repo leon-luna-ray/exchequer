@@ -1,16 +1,16 @@
 <template>
-    <main id="login">
+    <main id="login" class="centered-content">
         <FormPanel>
             <template v-slot:logo>Login</template>
             <template v-slot:form>
-
-                <label for="username">Username:</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" v-model="username" />
 
-                <label for="password">Password:</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" v-model="password" />
-
-                <button class="btn" type="submit">Login</button>
+                <div class="btn-wrap">
+                    <button class="btn" type="submit">Login</button>
+                </div>
             </template>
         </FormPanel>
     </main>
@@ -29,7 +29,10 @@ import FormPanel from '@/components/FormPanel.vue';
 const username = ref('');
 const password = ref('');
 
-
+const handleLogin = (e) => {
+    console.log(e);
+    console.log('event submit!!');
+}
 
 // const authStore = useAuthStore();
 // const {

@@ -1,6 +1,5 @@
 <template>
-    <section class="form-panel">
-        <h1 class="logo">Your Logo</h1>
+    <section class="form-panel flex-col-1">
         <h1>
             <slot name="logo"></slot>
         </h1>
