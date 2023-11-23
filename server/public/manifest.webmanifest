@@ -1,6 +1,6 @@
 {
-    "name": "Budget Tracker",
-    "short_name": "Budget Tracker",
+    "name": "Exchequer",
+    "short_name": "Exchequer",
     "icons": [
       {
         "src": "/icons/icon-192x192.png",
@@ -18,4 +18,3 @@
     "start_url": "/",
     "display": "standalone"
   }
-  

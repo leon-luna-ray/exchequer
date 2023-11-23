@@ -58,3 +58,6 @@ const password = ref('');
 // })
 </script>
 
+<style scoped>
+@import '@/assets/styles/pages/LoginPage.css';
+</style>

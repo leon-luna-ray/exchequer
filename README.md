@@ -1,40 +1,42 @@
+# Exchequer
 
-# Online/Offline Budget Tracker
+## Description
+Online/Offline Budget Tracker
+MEVN full-stack travel budgeting application.
 
-  ## Description
-  An app for tracking your budget while travelling and on the go. This app allows the user to enter and track expenses both when the app is online or offline. The app will automatically update the app database as soon as the connection is restored.
+### Link
 
-  ### Link
-  #### 🚧 This project is being refactored 🚧
-  - [https://express-budget.fly.dev/](https://express-budget.fly.dev/)
+#### 🚧 This project is in development 🚧
 
-  ## Technologies
-  This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
+[https://exchequer.fly.dev/](https://exchequer.fly.dev/)
 
-  ### Frontend
-  - CSS3
-  - HTML5
-  - Javascript
-  - Vite.js
-  - Vue.js
+## Technologies
 
-  ### Backend
-  - Express.js
-  - Fly.io
-  - Node.js
-  - MongoDB
+This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
 
-  ## License
+### Frontend
+- CSS3
+- HTML5
+- Javascript
+- Vite.js
+- Vue.js
 
-  This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+### Backend
+- Express.js
+- Fly.io
+- Node.js
+- MongoDB
 
-  ## Contact
+## License
 
-  Author: Ray Luna
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  If you have any questions about the repo, open an issue or contact me directly at:
-  - E-Mail: leon.luna.ray@gmail.com
-  - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
+## Contact
 
+Author: Ray Luna
 
+If you have any questions about the repo, open an issue or contact me directly at:
+
+- E-Mail: leon.luna.ray@gmail.com
+- GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
