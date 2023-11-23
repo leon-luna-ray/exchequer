@@ -1,5 +1,5 @@
 header {
-    padding: 1.4rem 0;
+  padding: 1.4rem 0;
 }
 header .inner {
   display: flex;
@@ -11,8 +11,11 @@ header nav {
   column-gap: 1rem;
   align-items: center;
 }
+.logout:hover {
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
-    header {
-        padding: 1rem 0;
-    }
+  header {
+    padding: 1rem 0;
+  }
 }

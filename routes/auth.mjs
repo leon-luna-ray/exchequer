@@ -39,16 +39,19 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Authentication failed' });
     }
 
-    const token = jwt.sign({ userId: user._id, email: email }, process.env.SECRET_KEY, {
-      expiresIn: '1h',
-    });
+    const token = jwt.sign(
+      { userId: user._id, email: email },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: '1h',
+      }
+    );
 
-    // Set the token as a cookie
     res.cookie('authToken', token, {
-      maxAge: 3600000, // 1 hour
+      maxAge: 3600000,
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set to true in production if using HTTPS
-      sameSite: 'None', // or 'Lax' or 'Strict' based on your requirements
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'None',
     });
 
     res.json({ token });
@@ -57,7 +60,5 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Login failed' });
   }
 });
-
-
 
 export default router;
