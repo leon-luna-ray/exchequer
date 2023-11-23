@@ -1,29 +1,24 @@
-.login-container {
+.form-panel {
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  /* background-color: var(--ex-white); */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.dark .login-container {
+.dark .form-panel {
   border: 1px solid var(--ex-white);
 }
 
-.login-container label {
+.form-panel:deep(label) {
   display: block;
   margin-bottom: 8px;
 }
 
-.login-container input {
+.form-panel:deep(input) {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
   border: 1px solid var(--ex-bluegray);
   border-radius: 5px;
-}
-
-.login-container button {
-  width: 100%;
 }
