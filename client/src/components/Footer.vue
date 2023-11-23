@@ -11,5 +11,5 @@ const year = new Date().getFullYear();
 </script>
 
 <style scoped>
-@import '@/assets/styles/components/Footer.css'
+@import '@/assets/styles/components/Footer.css';
 </style>

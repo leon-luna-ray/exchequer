@@ -1,13 +1,13 @@
 .hero {
   height: 600px;
 }
-.hero .container {
+.hero .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 80%;
+  width: 75%;
 }
 .hero h1 {
   font-size: 5rem;
@@ -24,7 +24,7 @@
   .hero {
     height: 400px;
   }
-  .hero .container {
+  .hero .inner {
     width: 100%;
   }
   .hero h1 {

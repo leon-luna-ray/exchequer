@@ -1,8 +1,7 @@
 <template>
     <main id="home">
         <div class="hero">
-            <div class="container">
-
+            <div class="inner container">
                 <h1>The progressive go-the-go travel budgeting app.</h1>
                 <p>A travel expenses app that works online and offline.</p>
                 <div class="buttons">
