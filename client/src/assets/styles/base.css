@@ -1,3 +1,13 @@
+:root {
+  --ex-black: #141911;
+  --ex-bluegray: #19647E;
+  --ex-verdigris: #28AFB0;
+  --ex-pistachio: #8EC187;
+  --ex-yellow: #F4D35E;
+  --ex-orange: #EE964B;
+  --ex-peach: #F1A96A;
+  --ex-white: #F8F8F8;
+
 body {
   font-family: 'Helvetica', 'Arial', sans-serif;
   background-color: darkslategrey;
