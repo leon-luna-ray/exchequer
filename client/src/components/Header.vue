@@ -1,9 +1,8 @@
 <template>
   <header>
     <div class="container">
-
       <router-link to="/">
-        <h1>Exchequer</h1>
+        <span class="logo">Exchequer</span>
       </router-link>
       <nav>
         <router-link to="/dashboard">Dashboard</router-link>

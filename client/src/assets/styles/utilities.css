@@ -31,6 +31,9 @@
   flex-direction: column;
   row-gap: 1rem;
 }
+.hidden {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
   .container {
