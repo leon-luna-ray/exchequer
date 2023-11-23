@@ -3,7 +3,7 @@
         <h1>
             <slot name="logo"></slot>
         </h1>
-        <form @submit.prevent="$e => handleSubmit($e)">
+        <form>
             <slot name="form"></slot>
         </form>
     </section>
@@ -17,7 +17,7 @@
 const props = defineProps({
     handleSubmit: {
         type: Function,
-        required: true,
+        required: false,
     }
 })
 </script>
