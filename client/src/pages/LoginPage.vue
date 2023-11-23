@@ -16,10 +16,6 @@
     </main>
 </template>
 
-<style scoped>
-@import '@/assets/styles/pages/LoginPage.css';
-</style>
-
 <script setup>
 import { onMounted, ref, computed } from 'vue';
 import { storeToRefs } from 'pinia'
