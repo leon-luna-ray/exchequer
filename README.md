@@ -1,20 +1,20 @@
 # Exchequer
 
 ## Description
-
+Online/Offline Budget Tracker
 MEVN full-stack travel budgeting application.
 
 ### Link
 
 #### 🚧 This project is in development 🚧
 
+[https://exchequer.fly.dev/](https://exchequer.fly.dev/)
 
 ## Technologies
 
 This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node.js
 
 ### Frontend
-
 - CSS3
 - HTML5
 - Javascript
@@ -22,7 +22,6 @@ This is a MEVN stack application built with MongoDB, Express.js, Vue.js and Node
 - Vue.js
 
 ### Backend
-
 - Express.js
 - Fly.io
 - Node.js
