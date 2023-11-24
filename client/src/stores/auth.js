@@ -1,8 +1,8 @@
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
-import { useStorage } from '@vueuse/core';
 import { jwtDecode } from 'jwt-decode';
+import { useStorage } from '@vueuse/core';
 import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', () => {
@@ -14,6 +14,9 @@ export const useAuthStore = defineStore('auth', () => {
   // State
   const loginEmail = ref('');
   const loginPassword = ref('');
+  const signupEmail = ref('');
+  const signupPassword = ref('');
+  const signupConfirmPassword = ref('');
 
   // Computed
   const user = computed(() => {
@@ -32,6 +35,37 @@ export const useAuthStore = defineStore('auth', () => {
   const resetLoginValues = () => {
     loginEmail.value = '';
     loginPassword.value = '';
+  };
+  const resetSignupValues = (isResetAll) => {
+    if (isResetAll) {
+      signupEmail.value = '';
+    }
+    signupPassword.value = '';
+    signupConfirmPassword.value = '';
+  };
+  const handleSignup = async () => {
+    if (signupPassword.value !== signupConfirmPassword.value) {
+      alert('Passwords do not match');
+      resetSignupValues();
+      return;
+    }
+    try {
+      const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+        email: signupEmail.value,
+        password: signupPassword.value,
+        confirmPassword: signupConfirmPassword.value,
+      });
+
+      if (response?.status === 200) {
+        resetSignupValues(true);
+        alert(response.data.message);
+        router.push('/login');
+      }
+    } catch (error) {
+      // TODO fix alert here, add alert if email already exists to backend
+      resetSignupValues();
+      alert('Signup failed.', error.response.data.error);
+    }
   };
   const handleLogin = async () => {
     try {
@@ -54,45 +88,20 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
   const handleLogout = () => {
+    // tod need to sigbn out on backend also
     authState.value.token = null;
     router.push('/login');
   };
 
-  // TODO re-add google auth as a signin option
-  // const {
-  //     isGoogleEnabled,
-  //     isSingedIn,
-  //     userProfile,
-  // } = storeToRefs(authStore);
-  // const loginButton = ref(null);
-  // onMounted(() => {
-  // TOdo allow for google or email login
-  // if (!isGoogleEnabled.value || isSingedIn.value) return
-  // try {
-  //     window.google.accounts.id.initialize({
-  //         ux_mode: "popup",
-  //         client_id: import.meta.env.VITE_APP_GOOGLE_CLIENT_ID,
-  //         callback: async (res) => {
-  //             if (res.credential) {
-  //                 authStore.signIn(res);
-  //             }
-  //         },
-  //     });
-  //     window.google.accounts.id.renderButton(loginButton.value, {
-  //         theme: "filled_blue",
-  //         size: "medium",
-  //         type: "standard",
-  //     });
-  // } catch (error) {
-  //     console.log(error);
-  // }
-  // })
-
   return {
     loginEmail,
     loginPassword,
+    signupEmail,
+    signupPassword,
+    signupConfirmPassword,
     user,
     handleLogin,
     handleLogout,
+    handleSignup,
   };
 });

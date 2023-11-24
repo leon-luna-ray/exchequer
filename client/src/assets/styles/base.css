@@ -14,6 +14,7 @@ body {
   margin: 0;
   color: var(--ex-black);
   background-color: var(--ex-white);
+  text-underline-offset: 3px;
 }
 .dark body {
   background-color: var(--ex-black);

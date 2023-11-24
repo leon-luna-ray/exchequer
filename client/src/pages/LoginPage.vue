@@ -1,6 +1,6 @@
 <template>
     <main id="login" class="page centered-content">
-        <FormPanel @submit.prevent="auth.handleLogin()">
+        <FormPanel @submit.prevent="auth.handleLogin">
             <template v-slot:logo>Login</template>
             <template v-slot:form>
                 <label for="email">Email</label>
@@ -10,6 +10,10 @@
                 <input type="password" id="password" v-model="loginPassword" />
                 <div class="btn-wrap">
                     <button class="btn" type="submit">Login</button>
+                </div>
+                <div class="message">
+                    <span class="small-text">Don't have an account? </span>
+                    <router-link to="/register">Click here to register</router-link>
                 </div>
             </template>
         </FormPanel>
