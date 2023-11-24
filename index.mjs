@@ -8,6 +8,7 @@ import './loadEnvironment.mjs';
 import posts from './routes/post.mjs';
 import authRoutes from './routes/auth.mjs';
 import protectedRoutes from './routes/protected.mjs';
+import { requireAuth } from './middleware/authMiddleware.mjs';
 
 const app = express();
 
@@ -35,8 +36,8 @@ app.use(express.json());
 
 // Routes
 app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/protected', protectedRoutes);
-app.use('/api/v1/posts', posts);
+// app.use('/api/v1/protected', protectedRoutes);
+app.use('/api/v1/posts', requireAuth, posts);
 
 // Static
 app.use(express.static('./client/dist'));

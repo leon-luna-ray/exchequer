@@ -1,6 +1,9 @@
 import express from 'express';
+import jwt from 'jsonwebtoken';
+import expressJwt from 'express-jwt';
 import Post from '../models/Post.mjs';
 
+const SECRET_KEY = process.env.SECRET_KEY;
 const router = express.Router();
 
 // GET
