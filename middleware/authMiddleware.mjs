@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 
-export default (req, res, next) => {
+export const verifyToken = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
 
     // Verify the token with your secret key
-    const decodedToken = jwt.verify(token, 'your_secret_key_here');
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
 
     req.userData = { userId: decodedToken.userId };
 
