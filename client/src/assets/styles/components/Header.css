@@ -1,19 +1,27 @@
 header {
   padding: 1.4rem 0;
 }
-header .inner {
+.inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-header nav {
+nav {
   display: flex;
   column-gap: 1rem;
   align-items: center;
 }
+a.active {
+  text-decoration: underline;
+}
 .logout:hover {
   cursor: pointer;
 }
+.current-user {
+  opacity: 70%;
+  font-size: 0.875rem;
+}
+
 @media screen and (max-width: 768px) {
   header {
     padding: 1rem 0;
