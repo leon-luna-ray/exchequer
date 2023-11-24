@@ -1,13 +1,12 @@
+import axios from 'axios';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
 import { jwtDecode } from 'jwt-decode';
 import { useStorage } from '@vueuse/core';
-import axios from 'axios';
+import { API_BASE_URL } from '@/lib/api';
 
 export const useAuthStore = defineStore('auth', () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const router = useRouter();
   const authState = useStorage('exchequer', { token: null });
 
