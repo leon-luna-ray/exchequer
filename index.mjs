@@ -1,14 +1,16 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import cors from 'cors';
 import path from 'path';
-import './loadEnvironment.mjs';
-import posts from './routes/post.mjs';
-import authRoutes from './routes/auth.mjs';
-import protectedRoutes from './routes/protected.mjs';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import { requireAuth } from './middleware/authMiddleware.mjs';
+
+import postRoutes from './routes/post.mjs';
+import authRoutes from './routes/auth.mjs';
+
+import './loadEnvironment.mjs';
 
 const app = express();
 
@@ -36,8 +38,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/v1/auth', authRoutes);
-// app.use('/api/v1/protected', protectedRoutes);
-app.use('/api/v1/posts', requireAuth, posts);
+app.use('/api/v1/posts', requireAuth, postRoutes);
 
 // Static
 app.use(express.static('./client/dist'));

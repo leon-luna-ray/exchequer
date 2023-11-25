@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
     res.json(posts);
   } catch (error) {
     res.status(500).json({ error: 'Could not fetch posts' });
+    res.redirect('/login');
   }
 });
 
@@ -36,7 +37,6 @@ router.post('/', async (req, res) => {
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
-    console.error('Error creating post:', error);
     res.status(500).json({ error: 'Could not create the post' });
   }
 });

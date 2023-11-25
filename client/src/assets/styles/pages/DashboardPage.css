@@ -8,7 +8,10 @@
   gap: 4rem;
 }
 
-.post-list li {
-    display: flex;
-    justify-content: space-between;
+
+@media screen and (max-width: 768px) {
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+  }
 }

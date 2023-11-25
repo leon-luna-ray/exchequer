@@ -1,7 +1,8 @@
 <template>
     <footer>
         <div class="inner">
-            <p>This app is in development. 🚧 ©{{ year }} <a href="https://www.rayluna.dev/" target="_blank">Ray Luna</a></p>
+            <span>This app is in development. 🚧 </span>
+            <span>©{{ year }} <a href="https://www.rayluna.dev/" target="_blank">Ray Luna</a></span>
         </div>
     </footer>
 </template>

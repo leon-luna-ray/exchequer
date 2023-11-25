@@ -6,8 +6,7 @@ export const requireAuth = (req, res, next) => {
     if (token) {
       jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
         if (err) {
-          console.log(err.message);
-          res.redirect('/login');
+          return res.status(401).json({ error: err.message });
         } else {
           next();
         }
