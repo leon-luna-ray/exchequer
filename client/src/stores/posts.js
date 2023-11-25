@@ -21,7 +21,6 @@ export const usePostStore = defineStore('posts', () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      //   console.log(response.data);
       setPosts(response.data);
     } catch (error) {
       console.error(error.response.data);
