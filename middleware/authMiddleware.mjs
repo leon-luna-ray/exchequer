@@ -8,6 +8,7 @@ export const requireAuth = (req, res, next) => {
         if (err) {
           return res.status(401).json({ error: err.message });
         } else {
+          req.decodedToken = decodedToken;
           next();
         }
       });

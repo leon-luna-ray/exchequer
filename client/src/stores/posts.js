@@ -74,6 +74,27 @@ export const usePostStore = defineStore('posts', () => {
       console.error(error.response.data);
     }
   };
+  const deleteExpense = async (id) => {
+    try {
+      const token = authState.value.token;
+      const response = await axios.delete(`${API_BASE_URL}/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log('Post deleted successfully');
+        fetchPosts();
+      } else if (response.status === 404) {
+        console.error('Post not found');
+      } else {
+        console.error('Could not delete the post');
+      }
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
 
   // Watchers
   watch(authState, () => {
@@ -87,5 +108,6 @@ export const usePostStore = defineStore('posts', () => {
     expenseFormData,
     fetchPosts,
     postExpense,
+    deleteExpense,
   };
 });

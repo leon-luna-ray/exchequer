@@ -9,7 +9,7 @@
             <div class="overlay">
                 <!-- <button>Edit</button> -->
                 <div></div>
-                <button>Delete</button>
+                <button @click="postStore.deleteExpense(post._id)">Delete</button>
             </div>
         </li>
     </ul>
@@ -18,6 +18,9 @@
 @import '../assets/styles/components/ListTransaction.css';
 </style>
 <script setup>
+import { usePostStore } from '@/stores/posts';
+
+const postStore = usePostStore();
 const props = defineProps({
     posts: {
         type: Array,
