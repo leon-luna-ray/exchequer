@@ -22,7 +22,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('@/pages/Dashboard.vue'),
+    component: () => import('@/pages/DashboardPage.vue'),
     beforeEnter: (to, from, next) => {
       if (authState.value.token) {
         next();
