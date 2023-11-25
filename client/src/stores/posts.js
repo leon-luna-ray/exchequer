@@ -5,10 +5,11 @@ import { useStorage } from '@vueuse/core';
 import { API_BASE_URL } from '@/lib/api';
 
 export const usePostStore = defineStore('posts', () => {
+  // State
   const authState = useStorage('exchequer', { token: null });
-
   const posts = ref(null);
 
+  // Methods
   const setPosts = (value) => {
     posts.value = value;
   };
@@ -41,6 +42,7 @@ export const usePostStore = defineStore('posts', () => {
     }
   };
 
+  // Watchers
   watch(authState, () => {
     if (!authState.value?.token) {
       setPosts(null);
@@ -49,7 +51,6 @@ export const usePostStore = defineStore('posts', () => {
 
   return {
     posts,
-    setPosts,
     fetchPosts,
     postExpense,
   };

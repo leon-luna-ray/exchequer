@@ -4,11 +4,13 @@ import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
 import { jwtDecode } from 'jwt-decode';
 import { useStorage } from '@vueuse/core';
+import { usePostStore } from '@/stores/posts';
 import { API_BASE_URL } from '@/lib/api';
 
 export const useAuthStore = defineStore('auth', () => {
   const router = useRouter();
   const authState = useStorage('exchequer', { token: null });
+  const postStore = usePostStore();
 
   // State
   const loginEmail = ref('');
@@ -78,7 +80,7 @@ export const useAuthStore = defineStore('auth', () => {
       if (token) {
         authState.value.token = token;
         resetLoginValues();
-        // TODO check auth on backend as well
+        postStore.fetchPosts();
         router.push('/dashboard');
       }
     } catch (error) {
