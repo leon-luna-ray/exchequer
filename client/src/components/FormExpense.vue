@@ -22,7 +22,6 @@
     </form>
 </template>
 
-<style scoped></style>
 <script setup>
 import { storeToRefs } from 'pinia';
 import { usePostStore } from '@/stores/posts'

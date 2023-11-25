@@ -1,17 +1,17 @@
 import express from 'express';
 import Expense from '../models/Expense.mjs';
-import { getUserFromAuth } from '../utils/user.mjs';
 
 const router = express.Router();
 
 // GET
 router.get('/', async (req, res) => {
   try {
-    const { userId } = getUserFromAuth(req.headers.authorization);
+    const { userId } = req.decodedToken;
     const posts = await Expense.find({ userId });
     res.json(posts);
   } catch (error) {
     res.status(500).json({ error: 'Could not fetch posts' });
+    res.redirect('/login');
   }
 });
 
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 // POST
 router.post('/', async (req, res) => {
   try {
-    const { userId } = getUserFromAuth(req.headers.authorization);
+    const { userId } = req.decodedToken;
     const newPost = new Expense({
       ...req.body,
       userId: userId,
@@ -36,7 +36,6 @@ router.post('/', async (req, res) => {
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
-    console.error('Error creating post:', error);
     res.status(500).json({ error: 'Could not create the post' });
   }
 });
@@ -55,14 +54,14 @@ router.post('/', async (req, res) => {
 // });
 
 // DELETE
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const post = await Post.findByIdAndDelete(req.params.id);
-//     if (!post) return res.status(404).json({ error: 'Post not found' });
-//     res.json({ message: 'Post deleted successfully' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Could not delete the post' });
-//   }
-// });
+router.delete('/:id', async (req, res) => {
+  try {
+    const post = await Expense.findByIdAndDelete(req.params.id);
+    if (!post) return res.status(404).json({ error: 'Post not found' });
+    res.json({ message: 'Post deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Could not delete the post' });
+  }
+});
 
 export default router;

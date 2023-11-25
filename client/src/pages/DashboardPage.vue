@@ -11,19 +11,7 @@
                 </div>
                 <div class="posts">
                     <h2>Posts</h2>
-
-                    <ul v-if="posts && posts?.length" class="post-list flex-col-1">
-                        <li v-for="post in posts">
-                            <span>{{ post.description }}</span>
-                            <div class="flex-col-03">
-
-                                <span>{{ post.amount }} {{ post.localCurrency }}</span>
-
-                                <span>XX {{ post.homeCurrency }}</span>
-
-                            </div>
-                        </li>
-                    </ul>
+                    <ListTransaction v-if="posts" :posts="posts" />
                 </div>
             </div>
         </div>
@@ -38,6 +26,7 @@
 import { storeToRefs } from 'pinia';
 import { usePostStore } from '@/stores/posts';
 import FormExpense from '@/components/FormExpense.vue';
+import ListTransaction from '../components/ListTransaction.vue';
 
 const postStore = usePostStore();
 const { posts } = storeToRefs(postStore);

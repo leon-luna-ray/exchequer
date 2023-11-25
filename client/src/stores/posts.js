@@ -2,10 +2,12 @@ import axios from 'axios';
 import { ref, watch } from 'vue';
 import { defineStore } from 'pinia';
 import { useStorage } from '@vueuse/core';
+import { useAuthStore } from '@/stores/auth';
 import { API_BASE_URL } from '@/lib/api';
 
 export const usePostStore = defineStore('posts', () => {
   // State
+  const auth = useAuthStore();
   const authState = useStorage('exchequer', { token: null });
   const posts = ref(null);
   const expenseFormData = ref({
@@ -34,14 +36,19 @@ export const usePostStore = defineStore('posts', () => {
   const fetchPosts = async () => {
     try {
       const token = authState.value.token;
-      const response = await axios.get(`${API_BASE_URL}/posts`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setPosts(response.data.reverse());
+      if (token) {
+        const response = await axios.get(`${API_BASE_URL}/posts`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPosts(response.data.reverse());
+      }
     } catch (error) {
-      console.error(error.response.data);
+      if (error.response.data.error === 'jwt expired') {
+        auth.handleLogout();
+      }
+      console.error(error.response.data.error);
     }
   };
   const postExpense = async () => {
@@ -67,6 +74,27 @@ export const usePostStore = defineStore('posts', () => {
       console.error(error.response.data);
     }
   };
+  const deleteExpense = async (id) => {
+    try {
+      const token = authState.value.token;
+      const response = await axios.delete(`${API_BASE_URL}/posts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log('Post deleted successfully');
+        fetchPosts();
+      } else if (response.status === 404) {
+        console.error('Post not found');
+      } else {
+        console.error('Could not delete the post');
+      }
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
 
   // Watchers
   watch(authState, () => {
@@ -80,5 +108,6 @@ export const usePostStore = defineStore('posts', () => {
     expenseFormData,
     fetchPosts,
     postExpense,
+    deleteExpense,
   };
 });
