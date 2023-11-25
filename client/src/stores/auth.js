@@ -1,15 +1,16 @@
+import axios from 'axios';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
 import { jwtDecode } from 'jwt-decode';
 import { useStorage } from '@vueuse/core';
-import axios from 'axios';
+import { usePostStore } from '@/stores/posts';
+import { API_BASE_URL } from '@/lib/api';
 
 export const useAuthStore = defineStore('auth', () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const router = useRouter();
   const authState = useStorage('exchequer', { token: null });
+  const postStore = usePostStore();
 
   // State
   const loginEmail = ref('');
@@ -79,7 +80,7 @@ export const useAuthStore = defineStore('auth', () => {
       if (token) {
         authState.value.token = token;
         resetLoginValues();
-        // TODO check auth on backend as well
+        postStore.fetchPosts();
         router.push('/dashboard');
       }
     } catch (error) {
@@ -87,10 +88,18 @@ export const useAuthStore = defineStore('auth', () => {
       resetLoginValues();
     }
   };
-  const handleLogout = () => {
-    // tod need to sigbn out on backend also
-    authState.value.token = null;
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${API_BASE_URL}/auth/logout`);
+
+      authState.value.token = null;
+      resetLoginValues();
+
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout failed:', error.response.data.error);
+      alert(`Logout failed`)
+    }
   };
 
   return {

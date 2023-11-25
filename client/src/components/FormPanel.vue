@@ -12,12 +12,3 @@
 <style scoped>
 @import '@/assets/styles/components/FormPanel.css';
 </style>
-
-<script setup>
-const props = defineProps({
-    handleSubmit: {
-        type: Function,
-        required: false,
-    }
-})
-</script>

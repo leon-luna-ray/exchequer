@@ -6,10 +6,10 @@
     </footer>
 </template>
 
-<script setup>
-const year = new Date().getFullYear();
-</script>
-
 <style scoped>
 @import '@/assets/styles/components/Footer.css';
 </style>
+
+<script setup>
+const year = new Date().getFullYear();
+</script>

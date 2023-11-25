@@ -1,15 +1,20 @@
 import jwt from 'jsonwebtoken';
 
-export default (req, res, next) => {
+export const requireAuth = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
-
-    // Verify the token with your secret key
-    const decodedToken = jwt.verify(token, 'your_secret_key_here');
-
-    req.userData = { userId: decodedToken.userId };
-
-    next();
+    if (token) {
+      jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
+        if (err) {
+          console.log(err.message);
+          res.redirect('/login');
+        } else {
+          next();
+        }
+      });
+    } else {
+      res.redirect('/login');
+    }
   } catch (error) {
     return res.status(401).json({ error: 'Authentication failed' });
   }

@@ -1,14 +1,14 @@
 import express from 'express';
-import Post from '../models/Post.mjs';
+import Expense from '../models/Expense.mjs';
+import { getUserFromAuth } from '../utils/user.mjs';
 
 const router = express.Router();
 
 // GET
 router.get('/', async (req, res) => {
   try {
-    const userId = req.query.userId;
-
-    const posts = await Post.find({ userId });
+    const { userId } = getUserFromAuth(req.headers.authorization);
+    const posts = await Expense.find({ userId });
     res.json(posts);
   } catch (error) {
     res.status(500).json({ error: 'Could not fetch posts' });
@@ -27,8 +27,13 @@ router.get('/', async (req, res) => {
 
 // POST
 router.post('/', async (req, res) => {
+  console.log('POST ROUTE');
   try {
-    const newPost = new Post(req.body);
+    const { userId } = getUserFromAuth(req.headers.authorization);
+    const newPost = new Expense({
+      ...req.body,
+      userId: userId,
+    });
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {

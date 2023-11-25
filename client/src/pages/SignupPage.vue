@@ -26,7 +26,6 @@ import { useAuthStore } from '../stores/auth';
 import FormPanel from '@/components/FormPanel.vue';
 
 const auth = useAuthStore();
-
 const { signupEmail, signupPassword, signupConfirmPassword, } = storeToRefs(auth);
 </script>
 
