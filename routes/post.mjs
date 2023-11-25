@@ -27,7 +27,6 @@ router.get('/', async (req, res) => {
 
 // POST
 router.post('/', async (req, res) => {
-  console.log('POST ROUTE');
   try {
     const { userId } = getUserFromAuth(req.headers.authorization);
     const newPost = new Expense({

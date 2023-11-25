@@ -1,0 +1,14 @@
+.title {
+  text-align: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+.post-list li {
+    display: flex;
+    justify-content: space-between;
+}

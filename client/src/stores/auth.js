@@ -25,7 +25,6 @@ export const useAuthStore = defineStore('auth', () => {
       const decodedToken = jwtDecode(authState.value.token);
 
       return {
-        id: decodedToken.userId,
         email: decodedToken.email,
       };
     }
@@ -98,7 +97,7 @@ export const useAuthStore = defineStore('auth', () => {
       router.push('/login');
     } catch (error) {
       console.error('Logout failed:', error.response.data.error);
-      alert(`Logout failed`)
+      alert(`Logout failed`);
     }
   };
 
