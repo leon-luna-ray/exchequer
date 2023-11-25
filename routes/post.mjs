@@ -29,7 +29,11 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   console.log('POST ROUTE');
   try {
-    const newPost = new Expense(req.body);
+    const { userId } = getUserFromAuth(req.headers.authorization);
+    const newPost = new Expense({
+      ...req.body,
+      userId: userId,
+    });
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {

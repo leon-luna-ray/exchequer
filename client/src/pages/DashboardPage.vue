@@ -19,7 +19,8 @@ const expenseData = {
     category: 'Accommodation',
 };
 onMounted(async () => {
-    await postStore.fetchPosts();
+    // await
     // await postStore.postExpense(expenseData);
 })
+postStore.fetchPosts();
 </script>
