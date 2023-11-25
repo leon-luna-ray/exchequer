@@ -8,10 +8,28 @@ export const usePostStore = defineStore('posts', () => {
   // State
   const authState = useStorage('exchequer', { token: null });
   const posts = ref(null);
+  const expenseFormData = ref({
+    description: '',
+    amount: '',
+    localCurrency: 'EUR',
+    homeCurrency: 'USD',
+    location: '',
+    category: '',
+  });
 
   // Methods
   const setPosts = (value) => {
     posts.value = value;
+  };
+  const resetExpenseForm = () => {
+    expenseFormData.value = {
+      description: '',
+      amount: '',
+      localCurrency: 'EUR',
+      homeCurrency: 'USD',
+      location: '',
+      category: '',
+    };
   };
   const fetchPosts = async () => {
     try {
@@ -21,22 +39,30 @@ export const usePostStore = defineStore('posts', () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      //   console.log(response.data);
-      setPosts(response.data);
+      setPosts(response.data.reverse());
     } catch (error) {
       console.error(error.response.data);
     }
   };
-  const postExpense = async (data) => {
-    console.log(data);
+  const postExpense = async () => {
     try {
       const token = authState.value.token;
-      const response = await axios.post(`${API_BASE_URL}/posts`, data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
+      const response = await axios.post(
+        `${API_BASE_URL}/posts`,
+        expenseFormData.value,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.status >= 200 && response.status < 300) {
+        resetExpenseForm();
+        fetchPosts();
+      } else {
+        console.error('Post was not successful.');
+      }
     } catch (error) {
       console.error(error.response.data);
     }
@@ -51,6 +77,7 @@ export const usePostStore = defineStore('posts', () => {
 
   return {
     posts,
+    expenseFormData,
     fetchPosts,
     postExpense,
   };
