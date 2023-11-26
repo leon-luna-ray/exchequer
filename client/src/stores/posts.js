@@ -84,7 +84,6 @@ export const usePostStore = defineStore('posts', () => {
       });
 
       if (response.status === 200) {
-        console.log('Post deleted successfully');
         fetchPosts();
       } else if (response.status === 404) {
         console.error('Post not found');
