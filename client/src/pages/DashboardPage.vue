@@ -6,19 +6,19 @@
             </div> -->
             <section class="user-budgets">
                 <h2>Budgets</h2>
-                <ul v-if="userBudgets?.length" class="budget-list flex-col-4">
+                <ul v-if="userBudgets" class="budget-list flex-col-4">
                     <li v-for="item in userBudgets" class="scale-div">
-                        <router-link :to="`/budgets/${item._id}`">
+                        <router-link :to="`/budget/${item._id}`">
                             <IconBudget />
                             <div class="flex-col-03">
                                 <h3 class="font-quicksand">{{ item.title }}</h3>
                                 <p v-if="item.description">{{ item.description }}</p>
                             </div>
+                            <div class="overlay">
+                                <button @click="budgetStore.deleteBudget(item._id)">Delete</button>
+                            </div>
                         </router-link>
-                        <div class="overlay">
-                            <!-- <button>Edit</button> -->
-                            <button @click="budgetStore.deleteBudget(item._id)">Delete</button>
-                        </div>
+
                     </li>
                 </ul>
                 <div v-else class="no-items">

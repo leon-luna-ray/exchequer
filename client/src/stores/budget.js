@@ -11,7 +11,8 @@ export const useBudgetStore = defineStore('budget', () => {
   const authState = useStorage('exchequer', { token: null });
 
   // State
-  const userBudgets = ref([]);
+  const userBudgets = ref(null);
+  const budgetDetailData = ref(null);
   const budgetFormData = ref({
     title: '',
     description: '',
@@ -23,8 +24,8 @@ export const useBudgetStore = defineStore('budget', () => {
   const setUserBudgets = (value) => {
     userBudgets.value = value;
   };
-  const clearUserData = () => {
-    setUserBudgets([]);
+  const setBudgetDetailData = (value) => {
+    budgetDetailData.value = value;
   };
   const resetBudgetForm = () => {
     budgetFormData.value = {
@@ -34,6 +35,11 @@ export const useBudgetStore = defineStore('budget', () => {
       // TODO set default to currency from user profile
       localCurrency: '',
     };
+  };
+  const clearUserData = () => {
+    setUserBudgets(null);
+    setBudgetDetailData(null);
+    resetBudgetForm();
   };
 
   // Methods
@@ -53,6 +59,26 @@ export const useBudgetStore = defineStore('budget', () => {
     } catch (error) {
       if (error.response.data.error === 'jwt expired') {
         auth.handleLogout();
+      }
+      console.error(error);
+    }
+  };
+  const fetchBudgetDetail = async (id) => {
+    try {
+      const token = authState.value.token;
+
+      if (token) {
+        const response = await axios.get(`${API_BASE_URL}/budget/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setBudgetDetailData(response.data);
+      }
+    } catch (error) {
+      if (error.response.data.error === 'jwt expired') {
+          auth.handleLogout();
       }
       console.error(error);
     }
@@ -104,10 +130,12 @@ export const useBudgetStore = defineStore('budget', () => {
   };
 
   return {
+    budgetDetailData,
     budgetFormData,
     userBudgets,
     clearUserData,
     deleteBudget,
+    fetchBudgetDetail,
     fetchUserBudgets,
     postNewBudget,
   };

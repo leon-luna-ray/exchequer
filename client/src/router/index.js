@@ -31,6 +31,19 @@ const routes = [
       }
     },
   },
+  {
+    path: '/budget/:id',
+    name: 'BudgetDetail',
+    component: () => import('@/pages/BudgetDetailPage.vue'),
+    props: true,
+    beforeEnter: (to, from, next) => {
+      if (authState.value.token) {
+        next();
+      } else {
+        next('/login');
+      }
+    },
+  },
 ];
 
 const router = createRouter({

@@ -20,7 +20,7 @@ router.get('/:budgetId', async (req, res) => {
     const { userId } = req.decodedToken;
     const { budgetId } = req.params;
 
-    const budget = await Budget.findOne({ _id: budgetId, userId });
+    const budget = await Budget.findOne({ _id: budgetId, userId }).select('-userId');;
     if (!budget) {
       return res.status(404).json({ error: 'Budget not found' });
     }

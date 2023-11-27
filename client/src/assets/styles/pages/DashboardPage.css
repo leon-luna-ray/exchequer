@@ -11,23 +11,20 @@
 .budget-list {
   list-style: none;
   padding: 2rem 0;
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; */
 }
 
 .budget-list a {
   display: flex;
   gap: 1rem;
-  /* flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 .budget-list li {
   display: flex;
   justify-content: space-between;
   position: relative;
 }
+/* .budget-list li:hover {
+  cursor: pointer;
+} */
 
 .budget-list li:hover .overlay {
   display: flex;
@@ -39,10 +36,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  /* display: flex; */
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   z-index: 1;
   color: white;
   display: none;
