@@ -77,7 +77,6 @@ export const useAuthStore = defineStore('auth', () => {
       if (token) {
         authState.value.token = token;
         resetLoginValues();
-        // postStore.fetchPosts();
         router.push('/dashboard');
       }
     } catch (error) {
