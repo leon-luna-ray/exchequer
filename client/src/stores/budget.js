@@ -92,7 +92,7 @@ export const useBudgetStore = defineStore('budget', () => {
       });
 
       if (response.status === 200) {
-        fetchPosts();
+        fetchUserBudgets();
       } else if (response.status === 404) {
         console.error('Post not found');
       } else {
