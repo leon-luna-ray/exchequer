@@ -15,6 +15,10 @@
                                 <p v-if="item.description">{{ item.description }}</p>
                             </div>
                         </router-link>
+                        <div class="overlay">
+                            <!-- <button>Edit</button> -->
+                            <button @click="budgetStore.deleteBudget(item._id)">Delete</button>
+                        </div>
                     </li>
                 </ul>
                 <div v-else class="no-items">
@@ -42,7 +46,7 @@ import FormBudget from '@/components/FormBudget.vue'
 import IconBudget from '@/components/icons/IconBudget.vue'
 
 const budgetStore = useBudgetStore();
-const { budgetFormData, userBudgets } = storeToRefs(budgetStore);
+const { userBudgets } = storeToRefs(budgetStore);
 
 // Lifecycle
 onMounted(async () => {

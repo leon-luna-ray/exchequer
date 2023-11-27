@@ -23,6 +23,38 @@
   justify-content: center;
   align-items: center; */
 }
+.budget-list li {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.budget-list li:hover .overlay {
+  display: flex;
+}
+
+.budget-list .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* display: flex; */
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  color: white;
+  display: none;
+}
+
+.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+
 
 @media screen and (max-width: 768px) {
   .inner,

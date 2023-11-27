@@ -20,7 +20,6 @@
 import { storeToRefs } from 'pinia';
 import { useBudgetStore } from '@/stores/budget';
 
-
 const budgetStore = useBudgetStore();
-const { budgetFormData, userBudgets } = storeToRefs(budgetStore);
+const { budgetFormData } = storeToRefs(budgetStore);
 </script>

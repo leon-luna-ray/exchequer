@@ -57,6 +57,7 @@ export const useBudgetStore = defineStore('budget', () => {
       console.error(error);
     }
   };
+
   const postNewBudget = async () => {
     try {
       const token = authState.value.token;
@@ -81,10 +82,32 @@ export const useBudgetStore = defineStore('budget', () => {
     }
   };
 
+  const deleteBudget = async (id) => {
+    try {
+      const token = authState.value.token;
+      const response = await axios.delete(`${API_BASE_URL}/budget/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        fetchPosts();
+      } else if (response.status === 404) {
+        console.error('Post not found');
+      } else {
+        console.error('Could not delete the post');
+      }
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
+
   return {
     budgetFormData,
     userBudgets,
     clearUserData,
+    deleteBudget,
     fetchUserBudgets,
     postNewBudget,
   };
