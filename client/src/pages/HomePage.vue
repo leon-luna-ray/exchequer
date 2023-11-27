@@ -1,5 +1,5 @@
 <template>
-    <main id="home" class="page flex-col-1">
+    <main id="home" class="page flex-col-2">
         <Hero />
     </main>
 </template>

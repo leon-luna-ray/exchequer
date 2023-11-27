@@ -1,6 +1,6 @@
 <template>
     <section class="hero">
-        <div class="inner container">
+        <div class="inner container flex-col-2">
             <h1>The progressive on-the-go travel budgeting app.</h1>
             <p>A travel expenses app that works online and offline.</p>
             <div v-if="auth.user" class="buttons">
