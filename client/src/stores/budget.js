@@ -12,6 +12,12 @@ export const useBudgetStore = defineStore('budget', () => {
 
   // State
   const userBudgets = ref([]);
+  const budgetFormData = ref({
+    title: '',
+    description: '',
+    amount: '',
+    localCurrency: '',
+  });
 
   // Setters
   const setUserBudgets = (value) => {
@@ -19,6 +25,15 @@ export const useBudgetStore = defineStore('budget', () => {
   };
   const clearUserData = () => {
     setUserBudgets([]);
+  };
+  const resetBudgetForm = () => {
+    budgetFormData.value = {
+      title: '',
+      description: '',
+      amount: '',
+      // TODO set default to currency from user profile
+      localCurrency: '',
+    };
   };
 
   // Methods
@@ -42,6 +57,35 @@ export const useBudgetStore = defineStore('budget', () => {
       console.error(error);
     }
   };
+  const postNewBudget = async () => {
+    try {
+      const token = authState.value.token;
+      const response = await axios.post(
+        `${API_BASE_URL}/budget`,
+        budgetFormData.value,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-  return { userBudgets, clearUserData, fetchUserBudgets };
+      if (response.status >= 200 && response.status < 300) {
+        resetBudgetForm();
+        fetchUserBudgets();
+      } else {
+        console.error('Post was not successful.');
+      }
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
+
+  return {
+    budgetFormData,
+    userBudgets,
+    clearUserData,
+    fetchUserBudgets,
+    postNewBudget,
+  };
 });
