@@ -4,16 +4,15 @@
             <div class="title">
                 <h1>Dashboard</h1>
             </div>
-            <div class="content">
-                <div class="transation">
-                    <h2>New Transaction</h2>
-                    <FormExpense />
+            <section class="user-budgets">
+                <h2>Budgets</h2>
+                <ul v-if="userBudgets?.length" class="budget-list flex-col-1">
+                    <li>List Item</li>
+                </ul>
+                <div v-else class="no-items">
+                    No budgets found.
                 </div>
-                <div class="posts">
-                    <h2>Posts</h2>
-                    <ListTransaction v-if="posts" :posts="posts" />
-                </div>
-            </div>
+            </section>
         </div>
     </main>
 </template>
@@ -23,13 +22,17 @@
 </style>
 
 <script setup>
+import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
-import { usePostStore } from '@/stores/posts';
-import FormExpense from '@/components/FormExpense.vue';
-import ListTransaction from '../components/ListTransaction.vue';
+import { useBudgetStore } from '@/stores/budget';
 
-const postStore = usePostStore();
-const { posts } = storeToRefs(postStore);
 
-postStore.fetchPosts();
+const budgetStore = useBudgetStore();
+
+const { userBudgets } = storeToRefs(budgetStore);
+
+// Lifecycle
+onMounted(async () => {
+    await budgetStore.fetchUserBudgets();
+})
 </script>
