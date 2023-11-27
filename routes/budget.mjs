@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Could not fetch user budgets' });
   }
 });
-
 router.get('/:budgetId', async (req, res) => {
   try {
     const { userId } = req.decodedToken;

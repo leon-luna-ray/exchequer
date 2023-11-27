@@ -38,7 +38,7 @@
 </style>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onBeforeMount } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBudgetStore } from '@/stores/budget';
 
@@ -49,7 +49,7 @@ const budgetStore = useBudgetStore();
 const { userBudgets } = storeToRefs(budgetStore);
 
 // Lifecycle
-onMounted(async () => {
+onBeforeMount(async () => {
     await budgetStore.fetchUserBudgets();
 })
 </script>

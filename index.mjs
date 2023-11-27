@@ -7,7 +7,6 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { requireAuth } from './middleware/authMiddleware.mjs';
 
-import postRoutes from './routes/post.mjs';
 import authRoutes from './routes/auth.mjs';
 import budgetRoutes from './routes/budget.mjs';
 
@@ -40,7 +39,6 @@ app.use(express.json());
 
 // Routes
 app.use(`${API_BASE_PATH}/auth`, authRoutes);
-app.use(`${API_BASE_PATH}/posts`, requireAuth, postRoutes);
 app.use(`${API_BASE_PATH}/budget`, requireAuth, budgetRoutes);
 
 // Static
