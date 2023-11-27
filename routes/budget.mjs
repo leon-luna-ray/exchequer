@@ -8,22 +8,28 @@ router.get('/', async (req, res) => {
   try {
     const { userId } = req.decodedToken;
 
-    const items = await Budget.find({ userId });
+    const items = await Budget.find({ userId }).select('-transactions -userId');
     res.json(items);
   } catch (error) {
     res.status(500).json({ error: 'Could not fetch user budgets' });
   }
 });
 
-// router.get('/:id', async (req, res) => {
-//   try {
-//     const post = await Post.findById(req.params.id);
-//     if (!post) return res.status(404).json({ error: 'Post not found' });
-//     res.json(post);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Could not fetch the post' });
-//   }
-// });
+router.get('/:budgetId', async (req, res) => {
+  try {
+    const { userId } = req.decodedToken;
+    const { budgetId } = req.params;
+
+    const budget = await Budget.findOne({ _id: budgetId, userId });
+    if (!budget) {
+      return res.status(404).json({ error: 'Budget not found' });
+    }
+
+    res.json(budget);
+  } catch (error) {
+    res.status(500).json({ error: 'Could not fetch budget details' });
+  }
+});
 
 // POST
 router.post('/', async (req, res) => {

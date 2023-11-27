@@ -6,8 +6,16 @@
             </div>
             <section class="user-budgets">
                 <h2>Budgets</h2>
-                <ul v-if="userBudgets?.length" class="budget-list flex-col-1">
-                    <li>List Item</li>
+                <ul v-if="userBudgets?.length" class="budget-list flex-col-4">
+                    <li v-for="item in userBudgets" class="scale-div">
+                        <router-link :to="`/budgets/${item._id}`">
+                            <IconBudget />
+                            <div class="flex-col-03">
+                                <h3 class="font-quicksand">{{ item.title }}</h3>
+                                <p v-if="item.description">{{ item.description }}</p>
+                            </div>
+                        </router-link>
+                    </li>
                 </ul>
                 <div v-else class="no-items">
                     No budgets found.
@@ -25,7 +33,7 @@
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBudgetStore } from '@/stores/budget';
-
+import IconBudget from '@/components/icons/IconBudget.vue'
 
 const budgetStore = useBudgetStore();
 

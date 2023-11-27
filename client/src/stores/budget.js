@@ -24,17 +24,15 @@ export const useBudgetStore = defineStore('budget', () => {
   // Methods
   const fetchUserBudgets = async () => {
     try {
-      console.log(`${API_BASE_URL}/budget`);
-      console.log('🐸 🐸 try fetch user budgets');
       const token = authState.value.token;
-      console.log(token);
+
       if (token) {
         const response = await axios.get(`${API_BASE_URL}/budget`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
+
         setUserBudgets(response.data.reverse());
       }
     } catch (error) {
