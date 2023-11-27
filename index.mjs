@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { requireAuth } from './middleware/authMiddleware.mjs';
 
-import postRoutes from './routes/post.mjs';
 import authRoutes from './routes/auth.mjs';
+import budgetRoutes from './routes/budget.mjs';
 
 import './loadEnvironment.mjs';
 
@@ -18,6 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const PORT = process.env.PORT || 8080;
+const API_BASE_PATH = '/api/v1';
 
 const connectDB = async () => {
   try {
@@ -37,8 +38,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/posts', requireAuth, postRoutes);
+app.use(`${API_BASE_PATH}/auth`, authRoutes);
+app.use(`${API_BASE_PATH}/budget`, requireAuth, budgetRoutes);
 
 // Static
 app.use(express.static('./client/dist'));

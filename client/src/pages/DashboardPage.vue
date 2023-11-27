@@ -1,19 +1,34 @@
 <template>
     <main id="dashboard" class="page">
-        <div class="container inner flex-col-1">
-            <div class="title">
+        <div class="container inner">
+            <!-- <div class="title">
                 <h1>Dashboard</h1>
-            </div>
-            <div class="content">
-                <div class="transation">
-                    <h2>New Transaction</h2>
-                    <FormExpense />
+            </div> -->
+            <section class="user-budgets">
+                <h2>Budgets</h2>
+                <ul v-if="userBudgets" class="budget-list flex-col-4">
+                    <li v-for="item in userBudgets" class="scale-div">
+                        <router-link :to="`/budget/${item._id}`">
+                            <IconBudget />
+                            <div class="flex-col-03">
+                                <h3 class="font-quicksand">{{ item.title }}</h3>
+                                <p v-if="item.description">{{ item.description }}</p>
+                            </div>
+                            <div class="overlay">
+                                <button @click="budgetStore.deleteBudget(item._id)">Delete</button>
+                            </div>
+                        </router-link>
+
+                    </li>
+                </ul>
+                <div v-else class="no-items">
+                    No budgets found.
                 </div>
-                <div class="posts">
-                    <h2>Posts</h2>
-                    <ListTransaction v-if="posts" :posts="posts" />
-                </div>
-            </div>
+            </section>
+            <section>
+                <h2>New Budget</h2>
+                <FormBudget />
+            </section>
         </div>
     </main>
 </template>
@@ -23,13 +38,18 @@
 </style>
 
 <script setup>
+import { onBeforeMount } from 'vue';
 import { storeToRefs } from 'pinia';
-import { usePostStore } from '@/stores/posts';
-import FormExpense from '@/components/FormExpense.vue';
-import ListTransaction from '../components/ListTransaction.vue';
+import { useBudgetStore } from '@/stores/budget';
 
-const postStore = usePostStore();
-const { posts } = storeToRefs(postStore);
+import FormBudget from '@/components/FormBudget.vue'
+import IconBudget from '@/components/icons/IconBudget.vue'
 
-postStore.fetchPosts();
+const budgetStore = useBudgetStore();
+const { userBudgets } = storeToRefs(budgetStore);
+
+// Lifecycle
+onBeforeMount(async () => {
+    await budgetStore.fetchUserBudgets();
+})
 </script>

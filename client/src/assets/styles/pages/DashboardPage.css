@@ -2,16 +2,64 @@
   text-align: center;
 }
 
-.content {
+.inner {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4rem;
 }
 
+.budget-list {
+  list-style: none;
+  padding: 2rem 0;
+}
+
+.budget-list a {
+  display: flex;
+  gap: 1rem;
+}
+.budget-list li {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+/* .budget-list li:hover {
+  cursor: pointer;
+} */
+
+.budget-list li:hover .overlay {
+  display: flex;
+}
+
+.budget-list .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: end;
+  z-index: 1;
+  color: white;
+  display: none;
+}
+
+.description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+}
+
 
 @media screen and (max-width: 768px) {
-  .content {
+  .inner,
+  .budget-list {
     grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
+  }
+
+  .user-budgets h2 {
+    text-align: center;
+    padding-bottom: 2rem;
   }
 }
